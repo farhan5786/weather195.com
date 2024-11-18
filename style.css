@@ -1,0 +1,277 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #7b7bff;
+}
+
+.container {
+  position: relative;
+  width: 400px;
+  height: 105px;
+  background: #fff;
+  padding: 28px 32px;
+  overflow: hidden;
+  border-radius: 18px;
+  font-family: 'Roboto', sans-serif;
+  transition: 0.6s ease-out;
+}
+
+.search-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative; 
+}
+
+.search-box input {
+  outline: none;
+  border: none;
+  width: 80%;
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding-left: 35px;
+}
+
+.search-box input::placeholder {
+  font-size: 18px;
+  font-weight: 500;
+  color: black;
+}
+
+.search-box button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  background: #fff;
+  color: #5549ff;
+  font-size: 20px;
+  transition: 0.4s ease;
+}
+
+.search-box button:active {
+  transform: scale(0.96);
+  color: #ccc;
+}
+
+.search-box i {
+  position: absolute;
+  left: 10px;
+  color: #4899ff;
+  font-size: 25px;
+}
+
+.weather-box {
+  text-align: center;
+}
+
+.weather-box img {
+  width: 60%;
+  margin-top: 30px;
+}
+
+.weather-box .temperature {
+  position: relative;
+  color: #06283D;
+  font-size: 4rem;
+  font-weight: 800;
+  margin-top: 30px;
+}
+
+.weather-box .temperature span {
+  position: absolute;
+  margin-left: 4px;
+  font-size: 1.5rem;
+}
+
+.weather-box .description {
+  color: #06283D;
+  font-size: 22px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.weather-details {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.weather-details .humidity, .weather-details .wind {
+  display: flex;
+  align-items: center;
+}
+
+.weather-details .humidity i, .weather-details .wind i {
+  font-size: 2rem;
+  color: #4899ff;
+  margin-right: 10px;
+}
+
+.weather-details .text span {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.weather-details .text p {
+  font-size: 1rem;
+  margin-top: 5px;
+}
+
+.weather-details .humidity, .weather-details .wind{
+  display: flex;
+  align-items: center;
+  width: 50%;
+  height: 100px;
+}
+
+.weather-details .humidity{
+  padding-left: 20px;
+  justify-content: flex-start;
+}
+
+.weather-details .wind{
+  padding-right: 20px;
+  justify-content: flex-end;
+}
+
+.weather-details i{
+  color: #06283D;
+  font-size: 26px;
+  margin-right: 10px;
+  margin-top: 6px;
+}
+
+.weather-details span{
+  color: #06283D;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.weather-details p{
+  color: #06283D;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.not-found{
+  width: 100%;
+  text-align: center;
+  margin-top: 50px;
+  scale: 0;
+  opacity: 0;
+  display: none;
+}
+
+.not-found img {
+  width: 70%;
+}
+
+.not-found p{
+  color: #06283D;
+  font-size: 22px;
+  font-weight: 500;
+  margin-top: 12px;
+}
+
+.weather-box, .weather-details{
+  transform: scale(0);
+  opacity: 0;
+}
+
+.fade-in{
+  animation: fadeIn 0.5s forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeIn {
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+/* Same CSS, as it's already clean and efficient */
+.not-found {
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+    display: none; /* Initially hidden */
+}
+
+.not-found img {
+    width: 50%;
+    margin: 0 auto;
+    opacity: 0.8;
+}
+
+.not-found p {
+    font-size: 18px;
+    color: #d9534f; /* Bright red color for alert */
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+
+.popup-warning {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: #ffffff;
+  padding: 25px 20px;
+  border-radius: 10px;
+  max-width: 320px;
+  text-align: center;
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.popup-message {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.popup-button {
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: #ffffff;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.popup-button:hover {
+  background-color: #0056b3;
+}
+
+.popup-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
+}

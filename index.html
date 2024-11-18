@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom reCAPTCHA with Loader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .recaptcha-container {
+            width: 320px;
+            background: #fff;
+            border: 1px solid #dcdcdc;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: left;
+        }
+        .recaptcha-checkbox {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            position: relative;
+            margin-right: 10px;
+            transition: all 0.2s;
+        }
+        .checkbox.checked {
+            background-color: #4285f4;
+            border-color: #4285f4;
+        }
+        .checkbox.checked:after {
+            content: "✔";
+            color: white;
+            font-size: 16px;
+            position: absolute;
+            top: 2px;
+            left: 6px;
+        }
+        .recaptcha-text {
+            font-size: 16px;
+            color: #333;
+        }
+        .recaptcha-loader {
+            display: none;
+            margin-top: 10px;
+            margin-left: 34px;
+        }
+        .loader {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #4285f4;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 0.7s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .recaptcha-logo {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 15px;
+        }
+        .recaptcha-logo img {
+            width: 18px;
+            margin-right: 5px;
+        }
+        .recaptcha-logo span {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .recaptcha-logo span:hover{
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .recaptcha-logo span:active{
+            transform: scale(0.99);
+        }
+    </style>
+</head>
+<body>
+    <div class="recaptcha-container">
+        <div class="recaptcha-checkbox" id="recaptchaCheckbox">
+            <div class="checkbox" id="checkbox"></div>
+            <span class="recaptcha-text">I'm not a robot</span>
+        </div>
+        <div class="recaptcha-loader" id="recaptchaLoader">
+            <div class="loader"></div>
+        </div>
+        <div class="recaptcha-logo">
+            <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA Logo">
+            <span>reCAPTCHA - Privacy & Terms</span>
+        </div>
+    </div>
+
+    <script>
+        const checkbox = document.getElementById('checkbox');
+        const recaptchaLoader = document.getElementById('recaptchaLoader');
+        const recaptchaCheckbox = document.getElementById('recaptchaCheckbox');
+
+        recaptchaCheckbox.addEventListener('click', () => {
+            if (!checkbox.classList.contains('checked')) {
+                checkbox.classList.add('checked');
+                recaptchaLoader.style.display = 'block';
+
+                // Simulate loading for 0.7 seconds
+                setTimeout(() => {
+                    recaptchaLoader.style.display = 'none';
+
+                    // Redirect to another page
+                    window.location.href = "main.html";
+                }, 700);
+            }
+        });
+    </script>
+</body>
+</html>
